@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+    </style>
+
+</head>
+{%set tenant_name= frappe.db.get_value("Tenants", {'name': doc.tenant}, ['full_name'])%}
+{%set shop_name= frappe.db.get_value("shop", {'name': doc.shop}, ['name1'])%}
+<body>
+    <h1 class="title">Rent Receipt</h1>
+   <div><hr style="height: 10px;"></div>
+   <div><h5>Payment ID  : {{doc.name}}</h5></div>
+   <div><h5>Payment Date  : {{doc.payment_date}}</h5></div>
+   <div><h5>Shop  : {{shop_name}}</h5></div>
+   <div><h5>Tenant Name  : {{tenant_name}}</h5></div>
+   <br>
+   <br>
+   <h5>This receipt is to confirm that rent payment in the sum of ${{doc.rent_amount}} the rental period for {{doc.payment_date}}</h5>
+   <br>
+   <br>
+   <br>
+   <div><h5>Thank you.</h5></div>
+   <br><br><br><br>
+   <div><h5>Shoplord Signature__________________________</h5></div>
+   <div><h5>Shoplord Name______________________________</h5></div>
+</body>
+</html>
